@@ -10,9 +10,8 @@ const placeList = (props) => {
   const placesOutput = props.places.map( (place, i) => {
     return (
       <ListItem
-        key           = {i + 1}
         placeName     = {place}
-        onItemPressed = {() => props.onItemDeleted(i)}
+        onItemPressed = {() => props.onItemSelected(i)}
       />
     )
   })
@@ -25,7 +24,7 @@ const placeList = (props) => {
         <ListItem
           placeName     = {info.item.name}
           placeImage    = {info.item.image}
-          onItemPressed = {() => props.onItemDeleted(info.item.key)}
+          onItemPressed = {() => props.onItemSelected(info.item.key)}
         />
       )}
     />

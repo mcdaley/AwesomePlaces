@@ -17,20 +17,18 @@ import {
 
 import PlaceInput           from './src/components/PlaceInput/PlaceInput'
 import PlaceList            from './src/components/PlaceList/PlaceList'
+import PlaceDetail          from './src/components/PlaceDetail/PlaceDetail'
+
 import placeImage           from './src/assets/Machu_Pichu.jpg'
-//** import ListItem             from './src/components/ListItem/ListItem'
 
-const instructions = Platform.select({
-  ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
-  android:
-    'Double tap R on your keyboard to reload,\n' +
-    'Shake or press menu button for dev menu',
-});
-
+/**
+ *
+ */
 type Props = {};
 export default class App extends Component<Props> {
   state = {
-    places:     [],
+    places:         [],
+    selectedPlace:  null,
   }
 
   placeAddedHandler = (placeName) => {
@@ -49,10 +47,21 @@ export default class App extends Component<Props> {
     })
   }
 
+  placeSelectedHandler = (key) => {
+    this.setState( prevState => {
+      return {
+        selectedPlace: prevState.places.find(place => {
+          return place.key === key
+        })
+      }
+    })
+  }
+
   placeDeletedHandler = (key) => {
     this.setState(prevState => {
       return {
-        places: prevState.places.filter( (place) => place.key !== key)
+        places: prevState.places.filter( (place) => place.key !== prevState.selectedPlace.key),
+        selectedPlace: null,
       }
     })
     /**
@@ -66,13 +75,26 @@ export default class App extends Component<Props> {
     **/
   }
 
+  modalClosedHandler = () => {
+    this.setState({
+      selectedPlace: null,
+    })
+  }
+
   render() {
     return (
       <View style={styles.container}>
-        <PlaceInput onPlaceAdded  = {this.placeAddedHandler} />
-        <PlaceList
-          places        = {this.state.places}
+        <PlaceDetail
+          selectedPlace = {this.state.selectedPlace}
           onItemDeleted = {this.placeDeletedHandler}
+          onModalClosed = {this.modalClosedHandler}
+        />
+        <PlaceInput
+          onPlaceAdded  = {this.placeAddedHandler}
+        />
+        <PlaceList
+          places          = {this.state.places}
+          onItemSelected  = {this.placeSelectedHandler}
         />
       </View>
     );
