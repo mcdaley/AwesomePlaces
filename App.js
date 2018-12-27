@@ -16,7 +16,8 @@ import {
   View }                    from 'react-native';
 
 import PlaceInput           from './src/components/PlaceInput/PlaceInput'
-import PlaceList           from './src/components/PlaceList/PlaceList'
+import PlaceList            from './src/components/PlaceList/PlaceList'
+import placeImage           from './src/assets/Machu_Pichu.jpg'
 //** import ListItem             from './src/components/ListItem/ListItem'
 
 const instructions = Platform.select({
@@ -32,23 +33,47 @@ export default class App extends Component<Props> {
     places:     [],
   }
 
-  placeSubmitHandler = (placeName) => {
+  placeAddedHandler = (placeName) => {
     if(placeName.trim() === '') {
       return
     }
 
     this.setState(prevState => {
       return {
-        places:   prevState.places.concat(placeName),
+        places: prevState.places.concat({
+          key:    Math.random(),
+          name:   placeName,
+          image:  placeImage
+        }),
       }
     })
+  }
+
+  placeDeletedHandler = (key) => {
+    this.setState(prevState => {
+      return {
+        places: prevState.places.filter( (place) => place.key !== key)
+      }
+    })
+    /**
+    this.setState(prevState => {
+      return {
+        places: prevState.places.filter( (place, i) => {
+          return i !== index
+        })
+      }
+    })
+    **/
   }
 
   render() {
     return (
       <View style={styles.container}>
-        <PlaceInput onPlaceSubmit = {this.placeSubmitHandler} />
-        <PlaceList  places        = {this.state.places} />
+        <PlaceInput onPlaceAdded  = {this.placeAddedHandler} />
+        <PlaceList
+          places        = {this.state.places}
+          onItemDeleted = {this.placeDeletedHandler}
+        />
       </View>
     );
   }

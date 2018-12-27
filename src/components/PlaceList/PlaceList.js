@@ -1,20 +1,34 @@
 //-----------------------------------------------------------------------------
 // src/components/PlaceList/PlaceList.js
 //-----------------------------------------------------------------------------
-import React                from 'react'
-import { View, StyleSheet } from 'react-native'
+import React                      from 'react'
+import { FlatList, StyleSheet }   from 'react-native'
 
 import ListItem   from '../ListItem/ListItem'
 
 const placeList = (props) => {
   const placesOutput = props.places.map( (place, i) => {
-    return (<ListItem key={i} placeName={place} />)
+    return (
+      <ListItem
+        key           = {i + 1}
+        placeName     = {place}
+        onItemPressed = {() => props.onItemDeleted(i)}
+      />
+    )
   })
 
   return (
-    <View style={styles.listContainer}>
-      {placesOutput}
-    </View>
+    <FlatList
+      style       = {styles.listContainer}
+      data        = {props.places}
+      renderItem  = { (info) => (
+        <ListItem
+          placeName     = {info.item.name}
+          placeImage    = {info.item.image}
+          onItemPressed = {() => props.onItemDeleted(info.item.key)}
+        />
+      )}
+    />
   )
 }
 

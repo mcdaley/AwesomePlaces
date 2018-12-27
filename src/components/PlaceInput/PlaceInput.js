@@ -20,7 +20,7 @@ export default class PlaceInput extends Component {
   }
 
   placeSubmitHandler = () => {
-    this.props.onPlaceSubmit(this.state.placeName)
+    this.props.onPlaceAdded(this.state.placeName)
 
     this.setState({
       placeName:  '',
@@ -55,9 +55,9 @@ styles = StyleSheet.create({
     alignItems:         "center",
   },
   placeInput: {
-    width:              "70%",
+    width:              "80%",
   },
   placeButton: {
-    width:              "30%",
+    width:              "20%",
   }
 })

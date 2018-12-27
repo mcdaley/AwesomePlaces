@@ -1,13 +1,21 @@
 //-----------------------------------------------------------------------------
 // src/components/ListItem/ListItem.js
 //-----------------------------------------------------------------------------
-import React                      from 'react'
-import { View, Text, StyleSheet } from 'react-native'
+import React          from 'react'
+import {
+  View,
+  Text,
+  Image,
+  StyleSheet,
+  TouchableOpacity }  from 'react-native'
 
 const listItem = (props) => (
-  <View style={styles.listItem}>
-    <Text>{props.placeName}</Text>
-  </View>
+  <TouchableOpacity onPress={props.onItemPressed}>
+    <View style={styles.listItem}>
+      <Image resizeMode='cover' source={props.placeImage} style={styles.placeImage}/>
+      <Text>{props.placeName}</Text>
+    </View>
+  </TouchableOpacity>
 )
 
 export default listItem
@@ -18,5 +26,12 @@ const styles = StyleSheet.create({
     marginBottom:       5,
     padding:            10,
     backgroundColor:    "#eee",
+    flexDirection:      'row',
+    alignItems:         'center',
   },
+  placeImage: {
+    marginRight:        8,
+    height:             30,
+    width:              30,
+  }
 })
