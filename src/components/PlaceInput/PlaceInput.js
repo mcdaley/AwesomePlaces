@@ -48,20 +48,16 @@ export default class PlaceInput extends Component {
 
 styles = StyleSheet.create({
   inputContainer: {
-    //** flex:               1,
-    flexDirection:      'row',
-    width:              '100%',
-    justifyContent:     'space-between',
-    alignItems:         'center',
-    marginBottom:       5,
-    //** marginTop:          50,
+    // flex: 1,
+    flexDirection:      "row",
+    width:              "100%",
+    justifyContent:     "space-between",
+    alignItems:         "center",
   },
   placeInput: {
-    width:              '70%',
-    borderBottomColor:  'black',
-    borderBottomWidth:  1,
+    width:              "70%",
   },
   placeButton: {
-    width:              '30%',
-  },
+    width:              "30%",
+  }
 })

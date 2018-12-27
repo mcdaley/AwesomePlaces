@@ -6,7 +6,7 @@ import { View, StyleSheet } from 'react-native'
 
 import ListItem   from '../ListItem/ListItem'
 
-const PlaceList = (props) => {
+const placeList = (props) => {
   const placesOutput = props.places.map( (place, i) => {
     return (<ListItem key={i} placeName={place} />)
   })
@@ -18,11 +18,10 @@ const PlaceList = (props) => {
   )
 }
 
-export default PlaceList
+export default placeList
 
 styles = StyleSheet.create({
   listContainer: {
-    width:              '100%',
-    marginBottom:       5,
+    width:              "100%",
   },
 })

@@ -1,7 +1,7 @@
 //-----------------------------------------------------------------------------
 // src/components/ListItem/ListItem.js
 //-----------------------------------------------------------------------------
-import React          from 'react'
+import React                      from 'react'
 import { View, Text, StyleSheet } from 'react-native'
 
 const listItem = (props) => (
@@ -14,9 +14,9 @@ export default listItem
 
 const styles = StyleSheet.create({
   listItem: {
-    width:              '100%',
-    padding:            10,
+    width:              "100%",
     marginBottom:       5,
-    backgroundColor:    '#eee',
-  }
+    padding:            10,
+    backgroundColor:    "#eee",
+  },
 })
