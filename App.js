@@ -5,14 +5,17 @@
  * @format
  * @flow
  */
-import { Navigation } from 'react-native-navigation'
+import { Navigation }     from 'react-native-navigation'
 
-import AuthScreen     from './src/screens/Auth/Auth'
+import AuthScreen         from './src/screens/Auth/Auth'
+import FindPlaceScreen    from './src/screens/FindPlace/FindPlace'
+import SharePlaceScreen   from './src/screens/SharePlace/SharePlace'
 
 // Register screens
-Navigation.registerComponent('awesome-places.AuthScreen', () => AuthScreen)
+Navigation.registerComponent('awesome-places.AuthScreen',       () => AuthScreen)
+Navigation.registerComponent('awesome-places.FindPlaceScreen',  () => FindPlaceScreen)
+Navigation.registerComponent('awesome-places.SharePlaceScreen', () => SharePlaceScreen)
 
-// Start App - v2
 Navigation.events().registerAppLaunchedListener(() => {
   Navigation.setRoot({
     root: {
@@ -27,8 +30,14 @@ Navigation.events().registerAppLaunchedListener(() => {
         }],
         options: {
           topBar: {
+            visible:    true,
+            background: {
+              color:    'pink'
+            },
             title: {
-              text: 'Login'
+              text:     'Login',
+              fontSize: 20,
+              color:    'orange'
             }
           }
         }

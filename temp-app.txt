@@ -1,0 +1,31 @@
+/**********************************************************
+Navigation.events().registerAppLaunchedListener(() => {
+  Navigation.setRoot({
+    root: {
+      stack: {
+        children: [{
+          component: {
+            name:       'awesome-places.AuthScreen',
+            passProps: {
+              text:     'stack with one child',
+            }
+          }
+        }],
+        options: {
+          topBar: {
+            visible:    true,
+            background: {
+              color: 'red'
+            },
+            title: {
+              text:     'Login',
+              fontSize: 20,
+              color:    'orange'
+            }
+          }
+        }
+      }
+    }
+  })
+})
+**********************************************************/
