@@ -21,7 +21,7 @@ class AuthScreen extends Component {
 
   render() {
     return (
-      <View>
+      <View style={styles.container}>
         <Text>Auth Screen</Text>
         <Text>{this.props.text}</Text>
         <Button title='Sign In' onPress={this.loginHandler} />
@@ -31,3 +31,11 @@ class AuthScreen extends Component {
 }
 
 export default AuthScreen
+
+const styles = StyleSheet.create({
+  container: {
+    flex:             1,
+    justifyContent:   'center',
+    alignItems:       'center',
+  }
+})

@@ -8,13 +8,25 @@ import {
   StyleSheet }              from 'react-native'
 
 class SharePlaceScreen extends Component {
-  constructor(props) {
-    super(props)
+  static get options() {
+    return {
+      topBar: {
+        visible:    true,
+        background: {
+          color:    'yellow',
+        },
+        title: {
+          text:     'Share Place',
+          fontSize: 20,
+          color:    'orange',
+        }
+      }
+    }
   }
 
   render() {
     return (
-      <View>
+      <View style={styles.container}>
         <Text>On SharePlace Screen</Text>
       </View>
     )
@@ -22,3 +34,11 @@ class SharePlaceScreen extends Component {
 }
 
 export default SharePlaceScreen
+
+const styles = StyleSheet.create({
+  container: {
+    flex:             1,
+    justifyContent:   'center',
+    alignItems:       'center',
+  }
+})

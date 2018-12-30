@@ -8,13 +8,25 @@ import {
   StyleSheet }              from 'react-native'
 
 class FindPlaceScreen extends Component {
-  constructor(props) {
-    super(props)
+  static get options() {
+    return {
+      topBar: {
+        visible:    true,
+        background: {
+          color:    'pink',
+        },
+        title: {
+          text:     'Find Place',
+          fontSize: 20,
+          color:    'orange',
+        }
+      }
+    }
   }
 
   render() {
     return (
-      <View>
+      <View style={styles.container}>
         <Text>On FindPlace Screen</Text>
       </View>
     )
@@ -22,3 +34,11 @@ class FindPlaceScreen extends Component {
 }
 
 export default FindPlaceScreen
+
+const styles = StyleSheet.create({
+  container: {
+    flex:             1,
+    justifyContent:   'center',
+    alignItems:       'center',
+  }
+})
