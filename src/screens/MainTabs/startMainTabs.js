@@ -11,19 +11,28 @@ const startMainTabs = () => {
   ]).then(sources => {
     Navigation.setRoot({
       root: {
-        component: {
-            name: 'awesome-places.FindPlaceScreen',
-        },
         bottomTabs: {
+          options: {
+            topBar: {
+              visible:    true,
+              drawBehind: false,
+              animate:    false,
+              background: {
+                color:    'blue',
+              }
+            }
+          },
           children: [
             {
               component: {
                 name: 'awesome-places.FindPlaceScreen',
                 options: {
-                  title: {
-                    text:     'Find Place',
-                    fontSize: 20,
-                    color:    'blue',
+                  topBar: {
+                    title: {
+                      text:     'Find Place',
+                      fontSize: 20,
+                      color:    'white'
+                    },
                   },
                   bottomTab: {
                     text:     'Find Place',
@@ -36,10 +45,12 @@ const startMainTabs = () => {
               component: {
                 name: 'awesome-places.SharePlaceScreen',
                 options: {
-                  title: {
-                    text:     'Share Place',
-                    fontSize: 20,
-                    color:    'purple'
+                  topBar: {
+                    title: {
+                      text:     'Share Place',
+                      fontSize: 20,
+                      color:    'white'
+                    },
                   },
                   bottomTab: {
                     text:     'Share Place',

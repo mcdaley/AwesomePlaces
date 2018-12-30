@@ -37,7 +37,7 @@ Navigation.events().registerAppLaunchedListener(() => {
             title: {
               text:     'Login',
               fontSize: 20,
-              color:    'orange'
+              color:    'black'
             }
           }
         }

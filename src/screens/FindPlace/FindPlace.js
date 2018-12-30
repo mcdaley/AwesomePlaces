@@ -8,21 +8,6 @@ import {
   StyleSheet }              from 'react-native'
 
 class FindPlaceScreen extends Component {
-  static get options() {
-    return {
-      topBar: {
-        visible:    true,
-        background: {
-          color:    'pink',
-        },
-        title: {
-          text:     'Find Place',
-          fontSize: 20,
-          color:    'orange',
-        }
-      }
-    }
-  }
 
   render() {
     return (

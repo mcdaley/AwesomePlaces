@@ -8,22 +8,7 @@ import {
   StyleSheet }              from 'react-native'
 
 class SharePlaceScreen extends Component {
-  static get options() {
-    return {
-      topBar: {
-        visible:    true,
-        background: {
-          color:    'yellow',
-        },
-        title: {
-          text:     'Share Place',
-          fontSize: 20,
-          color:    'orange',
-        }
-      }
-    }
-  }
-
+  
   render() {
     return (
       <View style={styles.container}>
