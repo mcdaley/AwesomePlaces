@@ -12,44 +12,48 @@ const startMainTabs = () => {
     Navigation.setRoot({
       root: {
         bottomTabs: {
-          options: {
-            topBar: {
-              visible:    true,
-              drawBehind: false,
-              animate:    false,
-              background: {
-                color:    'blue',
-              }
-            }
-          },
           children: [
             {
-              component: {
-                name: 'awesome-places.FindPlaceScreen',
-                options: {
-                  topBar: {
-                    title: {
-                      text:     'Find Place',
-                      fontSize: 20,
-                      color:    'white'
-                    },
+              stack: {
+                children: [
+                  {
+                    component: {
+                      name: 'awesome-places.FindPlaceScreen',
+                      options: {
+                        topBar: {
+                          visible:    true,
+                          title: {
+                            text:     'Find Place',
+                            fontSize: 20,
+                            color:    'white'
+                          },
+                          background: {
+                            color:    'navy',
+                          },
+                        },
+                        bottomTab: {
+                          text:     'Find Place',
+                          icon:     sources[0],
+                        },
+                      }
+                    }
                   },
-                  bottomTab: {
-                    text:     'Find Place',
-                    icon:     sources[0],
-                  },
-                }
-              }
+                ]
+              },
             },
             {
               component: {
                 name: 'awesome-places.SharePlaceScreen',
                 options: {
                   topBar: {
+                    visible:    true,
                     title: {
                       text:     'Share Place',
                       fontSize: 20,
                       color:    'white'
+                    },
+                    background: {
+                      color:    'navy',
                     },
                   },
                   bottomTab: {

@@ -26,21 +26,21 @@ Navigation.events().registerAppLaunchedListener(() => {
             passProps: {
               text:     'stack with one child',
             }
-          }
-        }],
-        options: {
-          topBar: {
-            visible:    true,
-            background: {
-              color:    'pink'
-            },
-            title: {
-              text:     'Login',
-              fontSize: 20,
-              color:    'black'
+          },
+          options: {
+            topBar: {
+              visible:    true,
+              background: {
+                color:    'navy'
+              },
+              title: {
+                title:    'Sign In',
+                fontSize: 20,
+                color:    'white'
+              }
             }
           }
-        }
+        }],
       }
     }
   })
