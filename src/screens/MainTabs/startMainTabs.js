@@ -44,18 +44,7 @@ const startMainTabs = () => {
             {
               component: {
                 name: 'awesome-places.SharePlaceScreen',
-                options: {
-                  topBar: {
-                    visible:    true,
-                    title: {
-                      text:     'Share Place',
-                      fontSize: 20,
-                      color:    'white'
-                    },
-                    background: {
-                      color:    'navy',
-                    },
-                  },
+                options: {  
                   bottomTab: {
                     text:     'Share Place',
                     icon:     sources[1],

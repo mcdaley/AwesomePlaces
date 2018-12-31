@@ -25,22 +25,28 @@ Navigation.events().registerAppLaunchedListener(() => {
             name:       'awesome-places.AuthScreen',
             passProps: {
               text:     'stack with one child',
-            }
-          },
-          options: {
-            topBar: {
-              visible:    true,
-              background: {
-                color:    'navy'
+            },
+            options: {
+              topBar: {
+                title: {
+                  text: 'Login',
+                },
               },
-              title: {
-                title:    'Sign In',
-                fontSize: 20,
-                color:    'white'
-              }
+            },
+          },
+        }],
+        options: {
+          topBar: {
+            visible:    true,
+            background: {
+              color:    'navy',
+            },
+            title: {
+              fontSize: 20,
+              color:    'white',
             }
           }
-        }],
+        }
       }
     }
   })
