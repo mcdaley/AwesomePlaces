@@ -6,15 +6,35 @@
  * @flow
  */
 import { Navigation }     from 'react-native-navigation'
+import { Provider }       from 'react-redux'
 
 import AuthScreen         from './src/screens/Auth/Auth'
 import FindPlaceScreen    from './src/screens/FindPlace/FindPlace'
 import SharePlaceScreen   from './src/screens/SharePlace/SharePlace'
+import configureStore     from './src/store/configureStore'
+
+// setup redux store
+const store = configureStore()
 
 // Register screens
-Navigation.registerComponent('awesome-places.AuthScreen',       () => AuthScreen)
-Navigation.registerComponent('awesome-places.FindPlaceScreen',  () => FindPlaceScreen)
-Navigation.registerComponent('awesome-places.SharePlaceScreen', () => SharePlaceScreen)
+Navigation.registerComponentWithRedux(
+  'awesome-places.AuthScreen',
+  () => AuthScreen,
+  Provider,
+  store
+)
+Navigation.registerComponentWithRedux(
+  'awesome-places.FindPlaceScreen',
+  () => FindPlaceScreen,
+  Provider,
+  store
+)
+Navigation.registerComponentWithRedux(
+  'awesome-places.SharePlaceScreen',
+  () => SharePlaceScreen,
+  Provider,
+  store
+)
 
 Navigation.events().registerAppLaunchedListener(() => {
   Navigation.setRoot({

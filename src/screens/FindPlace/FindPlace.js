@@ -2,10 +2,13 @@
 // src/screens/FindPlace/FindPlace.js
 //-----------------------------------------------------------------------------
 import React, { Component } from 'react'
+import { connect }          from 'react-redux'
 import {
   View,
   Text,
   StyleSheet }              from 'react-native'
+
+import PlaceList            from '../../components/PlaceList/PlaceList'
 
 class FindPlaceScreen extends Component {
 
@@ -13,12 +16,19 @@ class FindPlaceScreen extends Component {
     return (
       <View style={styles.container}>
         <Text>On FindPlace Screen</Text>
+        <PlaceList places={this.props.places} />
       </View>
     )
   }
 }
 
-export default FindPlaceScreen
+const mapStateToProps = (state) => {
+  return {
+    places: state.places.places,
+  }
+}
+
+export default connect(mapStateToProps, null)(FindPlaceScreen)
 
 const styles = StyleSheet.create({
   container: {

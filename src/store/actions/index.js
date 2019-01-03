@@ -3,6 +3,4 @@
 //-----------------------------------------------------------------------------
 export {
   addPlace,
-  deletePlace,
-  selectPlace,
-  deselectPlace } from './place'
+  deletePlace } from './place'

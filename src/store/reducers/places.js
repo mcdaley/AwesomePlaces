@@ -3,9 +3,7 @@
 //-----------------------------------------------------------------------------
 import {
   ADD_PLACE,
-  DELETE_PLACE,
-  SELECT_PLACE,
-  DESELECT_PLACE } from '../actions/actionTypes'
+  DELETE_PLACE } from '../actions/actionTypes'
 
 // Import image so it is available in the ADD_PLACE reducer
 import placeImage           from '../../assets/Machu_Pichu.jpg'
@@ -31,18 +29,6 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         places: state.places.filter( (place) => place.key !== state.selectedPlace.key),
-        selectedPlace: null,
-      }
-    case SELECT_PLACE:
-      return {
-        ...state,
-        selectedPlace: state.places.find(place => {
-          return place.key === action.placeKey
-        })
-      }
-    case DESELECT_PLACE:
-      return {
-        ...state,
         selectedPlace: null,
       }
     default:
