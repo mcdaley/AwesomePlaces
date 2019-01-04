@@ -27,6 +27,7 @@ const startMainTabs = () => {
                     children: [
                       {
                         component: {
+                          id:   'awesome-places.FindPlaceScreen.ID',
                           name: 'awesome-places.FindPlaceScreen',
                           options: {
                             topBar: {

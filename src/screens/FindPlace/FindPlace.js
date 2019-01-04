@@ -15,6 +15,10 @@ class FindPlaceScreen extends Component {
   constructor(props) {
     super(props)
 
+    this.state = {
+      leftSideDrawerVisible: false,
+    }
+
     Navigation.events().bindComponent(this);
   }
 
@@ -23,13 +27,16 @@ class FindPlaceScreen extends Component {
    */
   navigationButtonPressed({ buttonId }) {
     if(buttonId === 'sideDrawerToggleBtn') {
-      //** alert(`Clicked: ${buttonId}`)
       Navigation.mergeOptions('awesome-places.SideDrawerScreen.ID', {
         sideMenu: {
           left: {
-            visible: true
+            visible: !this.state.leftSideDrawerVisible,
           }
         }
+      })
+
+      this.setState({
+        leftSideDrawerVisible: !this.state.leftSideDrawerVisible,
       })
     }
   }
