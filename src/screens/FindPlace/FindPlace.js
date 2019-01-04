@@ -46,7 +46,7 @@ class FindPlaceScreen extends Component {
    */
   itemSelectedHandler = (key) => {
     const selPlace = this.props.places.find(place => {
-      return place.key = key
+      return place.key === key
     })
 
     Navigation.push(this.props.componentId, {

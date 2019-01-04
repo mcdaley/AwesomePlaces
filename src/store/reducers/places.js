@@ -14,13 +14,15 @@ const initialState = {
   selectedPlace:  null,
 }
 
+var Global_Id_Ctr = 1
+
 const reducer = (state = initialState, action) => {
   switch(action.type) {
     case ADD_PLACE:
       return {
         ...state,
         places: state.places.concat({
-          key:    Math.random().toString(),
+          key:    (Global_Id_Ctr++).toString(),
           name:   action.placeName,
           image:  placeImage
         }),
