@@ -12,6 +12,28 @@ import {
 import PlaceList            from '../../components/PlaceList/PlaceList'
 
 class FindPlaceScreen extends Component {
+  constructor(props) {
+    super(props)
+
+    Navigation.events().bindComponent(this);
+  }
+
+  /**
+   * Handle the clicking of the hamburger icon in the menu
+   */
+  navigationButtonPressed({ buttonId }) {
+    if(buttonId === 'sideDrawerToggleBtn') {
+      //** alert(`Clicked: ${buttonId}`)
+      Navigation.mergeOptions('awesome-places.SideDrawerScreen.ID', {
+        sideMenu: {
+          left: {
+            visible: true
+          }
+        }
+      })
+    }
+  }
+
   /**
    * View place details
    */

@@ -7,52 +7,70 @@ import Icon           from 'react-native-vector-icons/Ionicons'
 const startMainTabs = () => {
   Promise.all([
     Icon.getImageSource("md-map", 30),
-    Icon.getImageSource("ios-share-alt", 30)
+    Icon.getImageSource("ios-share-alt", 30),
+    Icon.getImageSource("ios-menu", 30)
   ]).then(sources => {
     Navigation.setRoot({
       root: {
-        bottomTabs: {
-          children: [
-            {
-              stack: {
-                children: [
-                  {
-                    component: {
-                      name: 'awesome-places.FindPlaceScreen',
-                      options: {
-                        topBar: {
-                          visible:    true,
-                          title: {
-                            text:     'Find Place',
-                            fontSize: 20,
-                            color:    'white'
-                          },
-                          background: {
-                            color:    'navy',
-                          },
-                        },
-                        bottomTab: {
-                          text:     'Find Place',
-                          icon:     sources[0],
-                        },
+        sideMenu: {
+          left: {
+            component: {
+              id:   'awesome-places.SideDrawerScreen.ID',
+              name: 'awesome-places.SideDrawerScreen',
+            }
+          },
+          center: {
+            bottomTabs: {
+              children: [
+                {
+                  stack: {
+                    children: [
+                      {
+                        component: {
+                          name: 'awesome-places.FindPlaceScreen',
+                          options: {
+                            topBar: {
+                              visible:    true,
+                              title: {
+                                text:     'Find Place',
+                                fontSize: 20,
+                                color:    'white'
+                              },
+                              background: {
+                                color:    'navy',
+                              },
+                              leftButtons: [
+                                {
+                                  id:    'sideDrawerToggleBtn',
+                                  icon:  sources[2],
+                                  color: 'white',
+                                }
+                              ],
+                            },
+                            bottomTab: {
+                              text:     'Find Place',
+                              icon:     sources[0],
+                            },
+                          }
+                        }
+                      },
+                    ]
+                  },
+                },
+                {
+                  component: {
+                    name: 'awesome-places.SharePlaceScreen',
+                    options: {
+                      bottomTab: {
+                        text:     'Share Place',
+                        icon:     sources[1],
                       }
                     }
-                  },
-                ]
-              },
-            },
-            {
-              component: {
-                name: 'awesome-places.SharePlaceScreen',
-                options: {  
-                  bottomTab: {
-                    text:     'Share Place',
-                    icon:     sources[1],
                   }
                 }
-              }
+              ]
             }
-          ]
+          }
         }
       }
     })
