@@ -11,7 +11,7 @@ import {
 class SideDrawerScreen extends Component {
   render() {
     return (
-      <View style={styles.container}>
+      <View style={[styles.container, {width: Dimensions.get('window').width * 0.8}]}>
         <Text>SideDrawer</Text>
       </View>
     )
@@ -23,8 +23,8 @@ export default SideDrawerScreen
 const styles = StyleSheet.create({
   container: {
     flex:             1,
+    backgroundColor:  'white',
     justifyContent:   'center',
     alignItems:       'center',
-    width:            Dimensions.get('window').width * 0.8,
   },
 })
