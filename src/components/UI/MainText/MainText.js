@@ -17,5 +17,6 @@ export default mainText
 const styles = StyleSheet.create({
   mainText: {
     color:              '#000000',
+    backgroundColor:    'transparent',
   }
 })
