@@ -4,6 +4,7 @@
 import React, { Component }                     from 'react'
 import { View, TextInput, Button, StyleSheet }  from 'react-native'
 
+import DefaultInput           from '../UI/DefaultInput/DefaultInput'
 export default class PlaceInput extends Component {
   constructor(props) {
     super(props)
@@ -19,45 +20,23 @@ export default class PlaceInput extends Component {
     })
   }
 
-  placeSubmitHandler = () => {
-    this.props.onPlaceAdded(this.state.placeName)
+  /**************************
+      placeSubmitHandler = () => {
+        this.props.onPlaceAdded(this.state.placeName)
 
-    this.setState({
-      placeName:  '',
-    })
-  }
+        this.setState({
+          placeName:  '',
+        })
+      }
+  ***************************/
 
   render() {
     return (
-      <View style={styles.inputContainer}>
-        <TextInput
-          style         = {styles.placeInput}
-          placeholder   = "An awesome place"
-          value         = {this.state.placeName}
-          onChangeText  = {this.placeNameChangedHandler}
-        />
-        <Button
-          title   = "Add"
-          style   = {styles.placeButton}
-          onPress = {this.placeSubmitHandler}
-        />
-      </View>
+      <DefaultInput
+        placeholder   = 'Place Name'
+        value         = {this.state.placeName}
+        onChangeText  = {this.placeNameChangedHandler}
+      />
     )
   }
 }
-
-styles = StyleSheet.create({
-  inputContainer: {
-    // flex: 1,
-    flexDirection:      "row",
-    width:              "100%",
-    justifyContent:     "space-between",
-    alignItems:         "center",
-  },
-  placeInput: {
-    width:              "80%",
-  },
-  placeButton: {
-    width:              "20%",
-  }
-})
