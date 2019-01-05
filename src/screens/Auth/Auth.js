@@ -9,6 +9,7 @@ import {
   StyleSheet }              from 'react-native'
 
 import startMainTabs        from '../MainTabs/startMainTabs'
+import MainText             from '../../components/UI/MainText/MainText'
 import HeadingText          from '../../components/UI/HeadingText/HeadingText'
 import DefaultInput         from '../../components/UI/DefaultInput/DefaultInput'
 
@@ -24,9 +25,11 @@ class AuthScreen extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <HeadingText>
-          Please Sign In
-        </HeadingText>
+        <MainText>
+          <HeadingText>
+            Please Sign In
+          </HeadingText>
+        </MainText>
         <Button title='Switch to Sign In' />
         <View style={styles.inputContainer}>
           <DefaultInput
