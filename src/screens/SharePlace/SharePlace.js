@@ -20,13 +20,29 @@ import PickImage            from '../../components/PickImage/PickImage'
 import PickLocation         from '../../components/PickLocation/PickLocation'
 
 class SharePlaceScreen extends Component {
+  constructor(props) {
+    super(props)
 
-  placeAddedHandler = (placeName) => {
-    if(placeName.trim() === '') {
+    this.state = {
+      placeName:  '',
+    }
+  }
+
+  placeNameChangedHandler = (val) => {
+    this.setState({
+      placeName: val,
+    })
+  }
+
+  placeAddedHandler = () => {
+    if(this.state.placeName.trim() === '') {
       return
     }
 
-    this.props.onAddPlace(placeName)
+    this.props.onAddPlace(this.state.placeName)
+    this.setState({
+      placeName: '',
+    })
   }
 
   render() {
@@ -38,9 +54,15 @@ class SharePlaceScreen extends Component {
           </MainText>
           <PickImage />
           <PickLocation />
-          <PlaceInput />
+          <PlaceInput
+            placeName     = {this.state.placeName}
+            onChangeText  = {this.placeNameChangedHandler}
+          />
           <View style={styles.button}>
-            <Button title='Share a Place' />
+            <Button
+              title   = 'Share a Place'
+              onPress = {this.placeAddedHandler}
+            />
           </View>
           {/* <PlaceInput onPlaceAdded={this.placeAddedHandler} /> */}
         </View>
