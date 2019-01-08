@@ -8,6 +8,7 @@ import {
   View,
   Text,
   Dimensions,
+  Platform,
   StyleSheet }              from 'react-native'
 
 class SideDrawerScreen extends Component {
@@ -17,7 +18,7 @@ class SideDrawerScreen extends Component {
         <TouchableOpacity>
           <View style={styles.drawerItem}>
             <Icon
-              name  = {'ios-log-out'}
+              name  = {Platform.OS === 'android' ? 'md-log-out' : 'ios-log-out'}
               size  = {30}
               color = '#AAAAAA'
               style = {styles.drawerItemIcon}
