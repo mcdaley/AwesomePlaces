@@ -4,3 +4,6 @@
 export {
   addPlace,
   deletePlace } from './place'
+
+export {
+  tryAuth }     from './auth'
