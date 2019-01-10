@@ -71,9 +71,9 @@ class AuthScreen extends Component {
     })
   }
 
-  updateStyles = (dims) => {
+  updateStyles = () => {
     this.setState({
-      viewMode: dims.get('window').height > 400 ? 'portrait' : 'landscape'
+      viewMode: Dimensions.get('window').height > 400 ? 'portrait' : 'landscape'
     })
   }
 
