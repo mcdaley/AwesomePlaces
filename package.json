@@ -3,13 +3,15 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start":    "node node_modules/react-native/local-cli/cli.js start",
-    "android":  "cd ./android && ./gradlew app:assembleDebug && ./gradlew installDebug",
-    "test":     "jest"
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "postinstall": "./node_modules/react-native-maps/enable-google-maps 'ios/**'",
+    "android": "cd ./android && ./gradlew app:assembleDebug && ./gradlew installDebug",
+    "test": "jest"
   },
   "dependencies": {
     "react": "16.6.3",
     "react-native": "0.57.8",
+    "react-native-maps": "^0.22.1",
     "react-native-navigation": "^2.4.0",
     "react-native-vector-icons": "^6.1.0",
     "react-redux": "^6.0.0",
