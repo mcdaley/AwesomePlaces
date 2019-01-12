@@ -22,9 +22,10 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         places: state.places.concat({
-          key:    (Global_Id_Ctr++).toString(),
-          name:   action.placeName,
-          image:  placeImage
+          key:      (Global_Id_Ctr++).toString(),
+          name:     action.placeName,
+          image:    placeImage,
+          location: action.location,
         }),
       }
     case DELETE_PLACE:

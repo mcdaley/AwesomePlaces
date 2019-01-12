@@ -46,6 +46,37 @@ class PickLocation extends Component {
         locationChosen: true,
       }
     })
+
+    // Call the SharePlace locationPickHandler
+    this.props.onPickLocation({
+      latitude:   coords.latitude,
+      longitude:  coords.longitude,
+    })
+  }
+
+  /**
+   * Get the user's current location and then re-use the
+   * pickLocationHandler() to map the user's location by creating an
+   * object that has the same properties of the event.reactNative
+   * passed to the pickLocationHandler
+   */
+  getLocationHandler = () => {
+    navigator.geolocation.getCurrentPosition(pos => {
+      const coordsEvent = {
+        nativeEvent: {
+          coordinate: {
+            latitude:   pos.coords.latitude,
+            longitude:  pos.coords.longitude,
+          }
+        }
+      }
+
+      this.pickLocationHandler(coordsEvent)
+    },
+    err => {
+      console.log(`Error: `, err)
+      alert(`Fetching the Position failed, please pick one manually`)
+    })
   }
 
   /**
@@ -71,7 +102,7 @@ class PickLocation extends Component {
         <View style={styles.button}>
           <Button
             title   = 'Locate Me'
-            onPress = {() => alert(`Pick location`)}
+            onPress = {this.getLocationHandler}
           />
         </View>
       </View>

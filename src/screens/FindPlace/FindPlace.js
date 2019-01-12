@@ -83,6 +83,10 @@ class FindPlaceScreen extends Component {
         useNativeDriver: true
       }
     ).start()
+
+    this.setState({
+      placesLoaded:   true,
+    })
   }
 
   render() {
