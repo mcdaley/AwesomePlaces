@@ -2,6 +2,12 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>AwesomePlaces would like to save photos to your gallery</string>
+	<key>NSCameraUsageDescription</key>
+	<string>AwesomePlaces would like to use your camera</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>AwsomePlaces would like to access your photo gallery</string>
 	<key>NSLocationUsageDescription</key>
 	<string>Let&apos;s share a place</string>
 	<key>UIAppFonts</key>

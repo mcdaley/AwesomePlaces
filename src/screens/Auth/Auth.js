@@ -30,7 +30,7 @@ class AuthScreen extends Component {
       authMode: 'login',
       controls: {
         email: {
-          value:    '',
+          value:    'marv@bills.com',
           valid:    false,
           touched:  false,
           validationRules: {
@@ -38,7 +38,7 @@ class AuthScreen extends Component {
           }
         },
         password: {
-          value:    '',
+          value:    'password123',
           valid:    false,
           touched:  false,
           validationRules: {
@@ -46,7 +46,7 @@ class AuthScreen extends Component {
           }
         },
         confirmPassword: {
-          value:    '',
+          value:    'password123',
           valid:    false,
           touched:  false,
           validationRules: {

@@ -11,8 +11,10 @@ import {
   Button,
   TouchableOpacity,
   Platform,
+  Dimensions,
   StyleSheet }              from 'react-native'
 import Icon                 from 'react-native-vector-icons/Ionicons'
+import MapView              from 'react-native-maps'
 
 import { deletePlace }  from '../../store/actions/index'
 
@@ -27,6 +29,13 @@ class PlaceDetailScreen extends Component {
   }
 
   render() {
+    let focusedLocation = {
+      latitude:       this.props.selectedPlace.location.latitude,
+      longitude:      this.props.selectedPlace.location.longitude,
+      latitudeDelta:  0.0122,
+      longitudeDelta: 0.0421,
+    }
+
     return(
       <View>
         <View style={styles.container}>
@@ -34,6 +43,14 @@ class PlaceDetailScreen extends Component {
             source  = {this.props.selectedPlace.image}
             style   = {styles.placeImage}
           />
+          <MapView
+            initialRegion = {focusedLocation}
+            style         = {styles.map}
+          >
+            <MapView.Marker
+              coordinate  = {this.props.selectedPlace.location}
+            />
+          </MapView>
           <Text style={styles.placeName}>
             {this.props.selectedPlace.name}
           </Text>
@@ -42,7 +59,7 @@ class PlaceDetailScreen extends Component {
           <TouchableOpacity onPress={this.placeDeletedHandler}>
             <View style={styles.deleteButton}>
               <Icon
-                size  = {30} 
+                size  = {30}
                 name  = {Platform.OS === 'android' ? 'md-trash' : 'ios-trash'}
                 color = 'red'
               />
@@ -69,6 +86,10 @@ const styles = StyleSheet.create({
   placeImage: {
     width:              '100%',
     height:             200,
+  },
+  map: {
+    width:              '100%',
+    height:             250,
   },
   placeName: {
     fontWeight:         'bold',

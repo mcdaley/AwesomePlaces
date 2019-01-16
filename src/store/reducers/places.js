@@ -24,8 +24,8 @@ const reducer = (state = initialState, action) => {
         places: state.places.concat({
           key:      (Global_Id_Ctr++).toString(),
           name:     action.placeName,
-          image:    placeImage,
           location: action.location,
+          image:    { uri: action.image.uri },
         }),
       }
     case DELETE_PLACE:

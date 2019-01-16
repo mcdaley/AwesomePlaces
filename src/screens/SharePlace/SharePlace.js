@@ -28,6 +28,10 @@ class SharePlaceScreen extends Component {
       location: {
         value:  null,
         valid:  false,
+      },
+      image: {
+        value:  null,
+        valid:  false,
       }
     }
   }
@@ -50,14 +54,37 @@ class SharePlaceScreen extends Component {
     })
   }
 
+  /**
+   *
+   */
   placeAddedHandler = () => {
     if(this.state.placeName.trim() === '') {
       return
     }
 
-    this.props.onAddPlace(this.state.placeName, this.state.location.value)
+    this.props.onAddPlace(
+      this.state.placeName,
+      this.state.location.value,
+      this.state.image.value,
+    )
+
     this.setState({
       placeName: '',
+    })
+  }
+
+  /**
+   *
+   */
+  imagePickHandler = (image) => {
+    this.setState(prevState => {
+      return {
+        ...prevState,
+        image: {
+          value:  image,
+          valid:  true,
+        }
+      }
     })
   }
 
@@ -68,7 +95,7 @@ class SharePlaceScreen extends Component {
           <MainText>
             <HeadingText>Share a place with us!</HeadingText>
           </MainText>
-          <PickImage />
+          <PickImage onImagePicked={this.imagePickHandler} />
           <PickLocation
             onPickLocation={this.locationPickHandler}
           />
@@ -91,7 +118,7 @@ class SharePlaceScreen extends Component {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onAddPlace: (placeName, location) => dispatch(addPlace(placeName, location)),
+    onAddPlace: (placeName, location, image) => dispatch(addPlace(placeName, location, image)),
   }
 }
 
