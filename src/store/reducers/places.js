@@ -2,6 +2,7 @@
 // src/store/reducers/places.js
 //-----------------------------------------------------------------------------
 import {
+  SET_PLACES,
   ADD_PLACE,
   DELETE_PLACE } from '../actions/actionTypes'
 
@@ -18,6 +19,11 @@ var Global_Id_Ctr = 1
 
 const reducer = (state = initialState, action) => {
   switch(action.type) {
+    case SET_PLACES:
+      return {
+        ...state,
+        places: action.places,
+      }
     case ADD_PLACE:
       return {
         ...state,

@@ -10,6 +10,7 @@ import {
   TextInput,
   Button,
   Image,
+  ActivityIndicator,
   StyleSheet }              from 'react-native'
 
 import { addPlace }         from '../../store/actions/index'
@@ -89,6 +90,19 @@ class SharePlaceScreen extends Component {
   }
 
   render() {
+    let submitButton = (
+      <Button
+        title   = 'Share a Place'
+        onPress = {this.placeAddedHandler}
+      />
+    )
+
+    if(this.props.isLoading) {
+      submitButton = (
+        <ActivityIndicator />
+      )
+    }
+
     return (
       <ScrollView>
         <View  style={styles.container}>
@@ -104,15 +118,19 @@ class SharePlaceScreen extends Component {
             onChangeText  = {this.placeNameChangedHandler}
           />
           <View style={styles.button}>
-            <Button
-              title   = 'Share a Place'
-              onPress = {this.placeAddedHandler}
-            />
+            {submitButton}
           </View>
           {/* <PlaceInput onPlaceAdded={this.placeAddedHandler} /> */}
         </View>
       </ScrollView>
     )
+  }
+}
+
+// Setup Redux
+const mapStateToProps = state => {
+  return {
+    isLoading: state.ui.isLoading,
   }
 }
 
@@ -122,8 +140,9 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(null, mapDispatchToProps)(SharePlaceScreen)
+export default connect(mapStateToProps, mapDispatchToProps)(SharePlaceScreen)
 
+// Define styles
 const styles = StyleSheet.create({
   container: {
     flex:               1,

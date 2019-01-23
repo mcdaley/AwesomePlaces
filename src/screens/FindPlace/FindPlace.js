@@ -12,6 +12,7 @@ import {
   StyleSheet }              from 'react-native'
 
 import PlaceList            from '../../components/PlaceList/PlaceList'
+import { getPlaces }        from '../../store/actions/index'
 
 class FindPlaceScreen extends Component {
   constructor(props) {
@@ -24,6 +25,10 @@ class FindPlaceScreen extends Component {
     }
 
     Navigation.events().bindComponent(this);
+  }
+
+  componentDidMount() {
+    this.props.onLoadPlaces()
   }
 
   /**
@@ -132,14 +137,22 @@ class FindPlaceScreen extends Component {
   }
 }
 
+// Setup Redux
 const mapStateToProps = (state) => {
   return {
     places: state.places.places,
   }
 }
 
-export default connect(mapStateToProps, null)(FindPlaceScreen)
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onLoadPlaces: () => dispatch(getPlaces())
+  }
+}
 
+export default connect(mapStateToProps, mapDispatchToProps)(FindPlaceScreen)
+
+// Define Styles
 const styles = StyleSheet.create({
   container: {
     flex:             1,

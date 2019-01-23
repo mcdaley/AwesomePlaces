@@ -3,7 +3,12 @@
 //-----------------------------------------------------------------------------
 export {
   addPlace,
-  deletePlace } from './place'
+  getPlaces,
+  deletePlace }   from './place'
 
 export {
-  tryAuth }     from './auth'
+  tryAuth }       from './auth'
+
+export {
+  uiStartLoading,
+  uiStopLoading } from './ui'
